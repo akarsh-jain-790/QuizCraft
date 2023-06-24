@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_craft/common_widgets/theme_button.dart';
 import 'package:quiz_craft/helper/colors_sys.dart';
 import 'package:quiz_craft/helper/strings.dart';
+import 'package:quiz_craft/screens/authentication/authentication.dart';
 
 class LoginCard extends StatelessWidget {
   const LoginCard({super.key});
@@ -29,6 +30,11 @@ class LoginCard extends StatelessWidget {
                 ),
                 ThemeButton(
                   name: Strings.signUpText,
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Authentication(),
+                      )),
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.min,
@@ -42,12 +48,19 @@ class LoginCard extends StatelessWidget {
                           ?.copyWith(color: ColorSys.kgrey),
                       textAlign: TextAlign.center,
                     ),
-                    Text(
-                      Strings.loginText,
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: ColorSys.kprimary,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
+                    GestureDetector(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Authentication(),
+                          )),
+                      child: Text(
+                        Strings.loginText,
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: ColorSys.kprimary,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ],
                 ),
