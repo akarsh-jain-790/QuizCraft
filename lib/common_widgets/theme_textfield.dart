@@ -1,0 +1,49 @@
+import 'package:flutter/material.dart';
+import 'package:quiz_craft/helper/colors_sys.dart';
+
+class ThemeTextField extends StatelessWidget {
+  const ThemeTextField(
+      {super.key,
+      this.controllerName,
+      required this.fieldName,
+      this.textFieldEvent,
+      required this.icon});
+
+  final TextEditingController? controllerName;
+  final void Function(dynamic)? textFieldEvent;
+  final String fieldName;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 55.0,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: ColorSys.kwhite,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            child: TextField(
+              controller: controllerName,
+              onChanged: textFieldEvent,
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: fieldName,
+                  icon: Icon(
+                    icon,
+                    color: ColorSys.kprimary,
+                  )),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

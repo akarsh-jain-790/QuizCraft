@@ -11,7 +11,7 @@ class ThemeButton extends StatelessWidget {
       onPressed: onPressed,
       style: ButtonStyle(
         shape: MaterialStatePropertyAll(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0))),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0))),
         minimumSize: const MaterialStatePropertyAll(Size.fromHeight(40)),
         padding: const MaterialStatePropertyAll(EdgeInsets.all(16.0)),
         backgroundColor:
