@@ -4,6 +4,7 @@ import 'package:quiz_craft/common_widgets/theme_button.dart';
 import 'package:quiz_craft/common_widgets/theme_textfield.dart';
 import 'package:quiz_craft/helper/strings.dart';
 import 'package:quiz_craft/screens/authentication/widgets/horizontal_or_line.dart';
+import 'package:quiz_craft/screens/home/home.dart';
 
 class Authentication extends StatelessWidget {
   const Authentication({super.key});
@@ -83,6 +84,8 @@ class Authentication extends StatelessWidget {
             ),
             ThemeButton(
               name: Strings.loginText,
+              onPressed: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Home())),
             ),
             Text(
               Strings.forgotPasswordText,

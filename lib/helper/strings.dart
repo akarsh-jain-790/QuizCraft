@@ -16,4 +16,12 @@ class Strings {
   static String termsAndConditionText =
       "By continuing, you agree to the Terms of Services \n & Privacy Policy.";
   static String horizontalOrLineText = "OR";
+
+  // Home Page
+  static String findQuizText = "Find Quiz Code";
+  static String findQuizDescriptionText =
+      "Enter quiz code that given by host, and you can't start gethering points!";
+  static String findQuizButtonText = "Find Quiz";
+  static String quizCodeText = "CVBG-TCVS-UIBK";
+  static String createQuizButtonText = "Create Quiz";
 }
