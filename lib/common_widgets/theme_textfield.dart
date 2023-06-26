@@ -7,11 +7,13 @@ class ThemeTextField extends StatelessWidget {
       this.controllerName,
       required this.fieldName,
       this.textFieldEvent,
-      required this.icon});
+      required this.icon,
+      this.fieldColor});
 
   final TextEditingController? controllerName;
   final void Function(dynamic)? textFieldEvent;
   final String fieldName;
+  final Color? fieldColor;
   final IconData icon;
 
   @override
@@ -20,7 +22,7 @@ class ThemeTextField extends StatelessWidget {
       height: 55.0,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: ColorSys.kwhite,
+        color: fieldColor ?? ColorSys.kwhite,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

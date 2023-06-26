@@ -63,6 +63,7 @@ flutter:
     - assets/icons/onboarding.svg
     - assets/icons/facebook.svg
     - assets/icons/google.svg
+    - assets/icons/logo.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
