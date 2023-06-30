@@ -1,32 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_craft/helper/colors_sys.dart';
 
-class ThemeTextField extends StatelessWidget {
-  const ThemeTextField(
+class CustomTextFormField extends StatelessWidget {
+  const CustomTextFormField(
       {super.key,
       this.controllerName,
       required this.fieldName,
-      this.textFieldEvent,
-      required this.icon,
-      this.fieldColor,
-      this.border = false});
+      this.textFieldEvent});
 
   final TextEditingController? controllerName;
   final void Function(dynamic)? textFieldEvent;
   final String fieldName;
-  final Color? fieldColor;
-  final IconData icon;
-  final bool? border;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 55.0,
+      height: 300.0,
       decoration: BoxDecoration(
-        border: Border.all(
-            color: ColorSys.kgrey, width: border == true ? 0.8 : 0.0),
+        border: Border.all(color: ColorSys.kgrey, width: 0.8),
         borderRadius: BorderRadius.circular(20),
-        color: fieldColor ?? ColorSys.kwhite,
+        color: ColorSys.kwhite,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -36,17 +29,15 @@ class ThemeTextField extends StatelessWidget {
           ),
           Expanded(
             child: TextField(
-              controller: controllerName,
-              onChanged: textFieldEvent,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
+                controller: controllerName,
+                onChanged: textFieldEvent,
+                keyboardType: TextInputType.text,
+                maxLines: null,
+                expands: true,
+                decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: fieldName,
-                  icon: Icon(
-                    icon,
-                    color: ColorSys.kprimary,
-                  )),
-            ),
+                )),
           ),
         ],
       ),

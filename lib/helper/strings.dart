@@ -23,5 +23,13 @@ class Strings {
       "Enter quiz code that given by host, and you can't start gethering points!";
   static String findQuizButtonText = "Find Quiz";
   static String quizCodeText = "CVBG-TCVS-UIBK";
-  static String createQuizButtonText = "Create Quiz";
+  static String createQuizText = "Create Quiz";
+
+  // Create Quiz
+  static String topicText = "Topic";
+  static String topicPlaceholderText = "Enter quiz Topic";
+  static String describeTopicText = "Topic Description";
+  static String describePlaceholderText = "Enter topic Description";
+  static String generateQuiz = "Generate Quiz";
+  static String bannerText = "Add Quiz Banner";
 }
