@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:quiz_craft/common_widgets/theme_button.dart';
 import 'package:quiz_craft/helper/colors_sys.dart';
 import 'package:quiz_craft/helper/strings.dart';
+import 'package:quiz_craft/screens/createQuiz/create_quiz.dart';
 import 'package:quiz_craft/screens/home/widget/join_quiz_card.dart';
 
 class Home extends StatelessWidget {
@@ -28,9 +29,13 @@ class Home extends StatelessWidget {
                 height: 20.0,
               ),
               ThemeButton(
-                name: Strings.createQuizButtonText,
+                name: Strings.createQuizText,
                 buttonColor: ColorSys.kwhite,
                 textColor: ColorSys.kblack,
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CreateQuiz())),
               ),
             ],
           ),
