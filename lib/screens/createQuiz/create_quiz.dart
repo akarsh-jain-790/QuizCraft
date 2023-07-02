@@ -24,60 +24,62 @@ class CreateQuiz extends StatelessWidget {
             .bodyLarge
             ?.copyWith(color: ColorSys.kwhite),
       ),
-      body: Container(
-        margin: const EdgeInsets.all(8.0),
-        padding: const EdgeInsets.all(24.0),
-        decoration: BoxDecoration(
-          color: Theme.of(context).canvasColor,
-          borderRadius: const BorderRadius.all(Radius.circular(48)),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const BannerImagePicker(),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              Strings.topicText,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(fontWeight: FontWeight.bold),
-              textAlign: TextAlign.left,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ThemeTextField(
-              fieldName: Strings.topicPlaceholderText,
-              icon: Icons.code_outlined,
-              border: true,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              Strings.describeTopicText,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(fontWeight: FontWeight.bold),
-              textAlign: TextAlign.left,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            CustomTextFormField(
-              fieldName: Strings.describePlaceholderText,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            ThemeButton(
-              name: Strings.generateQuiz,
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(24.0),
+          decoration: BoxDecoration(
+            color: Theme.of(context).canvasColor,
+            borderRadius: const BorderRadius.all(Radius.circular(48)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const BannerImagePicker(),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                Strings.topicText,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.copyWith(fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              ThemeTextField(
+                fieldName: Strings.topicPlaceholderText,
+                icon: Icons.code_outlined,
+                border: true,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                Strings.describeTopicText,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.copyWith(fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              CustomTextFormField(
+                fieldName: Strings.describePlaceholderText,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ThemeButton(
+                name: Strings.generateQuiz,
+              ),
+            ],
+          ),
         ),
       ),
     );
