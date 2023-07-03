@@ -4,7 +4,8 @@ import 'package:quiz_craft/common_widgets/theme_textfield.dart';
 import 'package:quiz_craft/helper/colors_sys.dart';
 import 'package:quiz_craft/helper/strings.dart';
 import 'package:quiz_craft/screens/createQuiz/widgets/banner_image_picker.dart';
-import 'package:quiz_craft/screens/createQuiz/widgets/custom_text_form_field.dart';
+import 'package:quiz_craft/common_widgets/custom_text_form_field.dart';
+import 'package:quiz_craft/screens/generateQuiz/generate_quiz.dart';
 
 class CreateQuiz extends StatelessWidget {
   const CreateQuiz({super.key});
@@ -77,6 +78,10 @@ class CreateQuiz extends StatelessWidget {
               ),
               ThemeButton(
                 name: Strings.generateQuiz,
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const GenerateQuiz())),
               ),
             ],
           ),

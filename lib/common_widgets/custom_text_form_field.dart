@@ -6,16 +6,18 @@ class CustomTextFormField extends StatelessWidget {
       {super.key,
       this.controllerName,
       required this.fieldName,
-      this.textFieldEvent});
+      this.textFieldEvent,
+      this.fieldHeight = 250.0});
 
   final TextEditingController? controllerName;
   final void Function(dynamic)? textFieldEvent;
   final String fieldName;
+  final double fieldHeight;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250.0,
+      height: fieldHeight,
       decoration: BoxDecoration(
         border: Border.all(color: ColorSys.kgrey, width: 0.8),
         borderRadius: BorderRadius.circular(20),
@@ -34,6 +36,9 @@ class CustomTextFormField extends StatelessWidget {
                 keyboardType: TextInputType.text,
                 maxLines: null,
                 expands: true,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontSize: 20.0,
+                    ),
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: fieldName,

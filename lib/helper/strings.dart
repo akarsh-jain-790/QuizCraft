@@ -32,4 +32,12 @@ class Strings {
   static String describePlaceholderText = "Enter topic Description";
   static String generateQuiz = "Generate Quiz";
   static String bannerText = "Add Quiz Banner";
+
+  // Generated Quez
+  static String questionText = "Question";
+  static String option1Text = "Option 1";
+  static String option2Text = "Option 2";
+  static String option3Text = "Option 3";
+  static String option4Text = "Option 4";
+  static String regenerateButtonTexr = "Re-generate Question";
 }
