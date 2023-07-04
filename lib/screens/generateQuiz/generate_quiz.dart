@@ -82,7 +82,7 @@ class _GenerateQuizState extends State<GenerateQuiz> {
               height: 20.0,
             ),
             ThemeButton(
-              name: Strings.regenerateButtonTexr,
+              name: Strings.regenerateButtonText,
             ),
           ],
         ),

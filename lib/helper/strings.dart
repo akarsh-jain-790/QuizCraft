@@ -39,5 +39,5 @@ class Strings {
   static String option2Text = "Option 2";
   static String option3Text = "Option 3";
   static String option4Text = "Option 4";
-  static String regenerateButtonTexr = "Re-generate Question";
+  static String regenerateButtonText = "Re-generate Question";
 }
