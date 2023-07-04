@@ -30,7 +30,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # For Displaying SVG's
   flutter_svg: ^2.0.4
+  # For managing Pagination
+  pagination_flutter: ^0.0.8
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
