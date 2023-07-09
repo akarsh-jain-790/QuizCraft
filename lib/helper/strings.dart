@@ -40,4 +40,11 @@ class Strings {
   static String option3Text = "Option 3";
   static String option4Text = "Option 4";
   static String regenerateButtonText = "Re-generate Question";
+
+  // Review and save
+  static String quizNameText = "Quiz Name";
+  static String quizNamePlaceholderText = "Enter Quiz Name";
+  static String quizDescriptionText = "Quiz Description";
+  static String quizDescriptionPlaceholderText = "Enter Quiz Description";
+  static String saveButtonText = "Save";
 }
