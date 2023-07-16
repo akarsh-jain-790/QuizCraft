@@ -5,6 +5,7 @@ import 'package:quiz_craft/common_widgets/theme_textfield.dart';
 import 'package:quiz_craft/helper/colors_sys.dart';
 import 'package:quiz_craft/helper/strings.dart';
 import 'package:quiz_craft/screens/generateQuiz/widgets/paginator.dart';
+import 'package:quiz_craft/screens/reviewAndSave/review_and_save.dart';
 
 class GenerateQuiz extends StatefulWidget {
   const GenerateQuiz({super.key});
@@ -83,6 +84,10 @@ class _GenerateQuizState extends State<GenerateQuiz> {
             ),
             ThemeButton(
               name: Strings.regenerateButtonText,
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ReviewAndSave())),
             ),
           ],
         ),
