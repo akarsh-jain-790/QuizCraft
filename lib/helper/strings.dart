@@ -47,4 +47,10 @@ class Strings {
   static String quizDescriptionText = "Quiz Description";
   static String quizDescriptionPlaceholderText = "Enter Quiz Description";
   static String saveButtonText = "Save";
+
+  //Join quiz
+  static String joinQuizText = "Join Quiz";
+  static String numberOfQuestionsText = "10 questions";
+  static String timeText = "10 minutes";
+  static String startQuizText = "Start Quiz";
 }
