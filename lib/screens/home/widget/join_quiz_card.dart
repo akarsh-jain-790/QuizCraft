@@ -3,6 +3,7 @@ import 'package:quiz_craft/common_widgets/theme_button.dart';
 import 'package:quiz_craft/common_widgets/theme_textfield.dart';
 import 'package:quiz_craft/helper/colors_sys.dart';
 import 'package:quiz_craft/helper/strings.dart';
+import 'package:quiz_craft/screens/findQuiz/find_quiz.dart';
 
 class JoinQuizCard extends StatelessWidget {
   const JoinQuizCard({super.key});
@@ -41,6 +42,8 @@ class JoinQuizCard extends StatelessWidget {
               ),
               ThemeButton(
                 name: Strings.findQuizButtonText,
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const FindQuiz())),
               ),
             ],
           ),
