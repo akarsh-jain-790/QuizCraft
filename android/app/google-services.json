@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "450414670000",
+    "project_id": "gpt-quiz-flutter",
+    "storage_bucket": "gpt-quiz-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450414670000:android:e9d72247458a6b22ac0b75",
+        "android_client_info": {
+          "package_name": "com.example.quiz_craft"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450414670000-n83ql8rq4jg32h8jrf4a7vcgkicnvc6t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqOINNr7niIWooqa98npmJhLmeSmo5sSw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450414670000-n83ql8rq4jg32h8jrf4a7vcgkicnvc6t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "450414670000-3v82c27g6vdig2oqebnk6d3kpmep8vub.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.quizCraft.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,6 +3,7 @@ import 'package:quiz_craft/common_widgets/theme_button.dart';
 import 'package:quiz_craft/helper/colors_sys.dart';
 import 'package:quiz_craft/helper/strings.dart';
 import 'package:quiz_craft/screens/authentication/authentication.dart';
+import 'package:quiz_craft/screens/authentication/signup.dart';
 
 class LoginCard extends StatelessWidget {
   const LoginCard({super.key});
@@ -33,7 +34,7 @@ class LoginCard extends StatelessWidget {
                   onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Authentication(),
+                        builder: (context) => const SignUp(),
                       )),
                 ),
                 Row(
