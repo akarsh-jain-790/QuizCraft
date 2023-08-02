@@ -9,11 +9,13 @@ class ThemeTextField extends StatelessWidget {
       this.textFieldEvent,
       required this.icon,
       this.fieldColor,
-      this.border = false});
+      this.border = false,
+      this.passwordField = false});
 
   final TextEditingController? controllerName;
   final void Function(dynamic)? textFieldEvent;
   final String fieldName;
+  final bool passwordField;
   final Color? fieldColor;
   final IconData icon;
   final bool? border;
@@ -39,6 +41,9 @@ class ThemeTextField extends StatelessWidget {
               controller: controllerName,
               onChanged: textFieldEvent,
               keyboardType: TextInputType.text,
+              obscureText: passwordField,
+              enableSuggestions: !passwordField,
+              autocorrect: !passwordField,
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: fieldName,

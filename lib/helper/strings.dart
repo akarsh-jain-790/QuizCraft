@@ -8,6 +8,8 @@ class Strings {
   // Authentication
   static String loginWithGoogle = "Login with Google";
   static String loginWithFacebook = "Login with Facebook";
+  static String nameText = "Full Name";
+  static String namePlaceholder = "Your full name";
   static String emailText = "Email Address";
   static String emailPlaceholder = "Your email address";
   static String passwordText = "Password";
