@@ -42,7 +42,10 @@ dependencies:
   cloud_firestore: ^4.7.1
   firebase_analytics: ^10.1.6
   firebase_auth: ^4.3.0
-  motion_toast: ^2.6.7
+  motion_toast: ^2.7.8
+  flutter_riverpod: ^2.4.0
+  google_sign_in: ^6.1.5
+  fpdart: ^1.1.0
 
 dev_dependencies:
   flutter_test:
