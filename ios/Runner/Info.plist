@@ -47,5 +47,22 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+	<dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<string>com.googleusercontent.apps.450414670000-9jkvab76122ln1sjt8c8mrvpv9h50eks</string>
+		</array>
+	</dict>
+</array>
+ <key>NSPhotoLibraryUsageDescription</key>
+    <string>Example Flutter app needs access to your photo library to pick images.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Example Flutter app needs access to your camera to capture new images.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Example Flutter app needs access to your microphone to record videos.</string>
 </dict>
 </plist>

@@ -1,13 +1,41 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quiz_craft/common_widgets/custom_text_form_field.dart';
 import 'package:quiz_craft/common_widgets/theme_button.dart';
 import 'package:quiz_craft/common_widgets/theme_textfield.dart';
+import 'package:quiz_craft/firebase/quiz/controller/quiz_controller.dart';
 import 'package:quiz_craft/helper/colors_sys.dart';
 import 'package:quiz_craft/helper/strings.dart';
 
-class ReviewAndSave extends StatelessWidget {
+class ReviewAndSave extends ConsumerStatefulWidget {
   const ReviewAndSave({super.key});
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _ReviewAndSaveState();
+}
+
+class _ReviewAndSaveState extends ConsumerState<ReviewAndSave> {
+  late TextEditingController quizNameController;
+  late TextEditingController quizDescriptionController;
+  late bool saveButtonState;
+
+  @override
+  void initState() {
+    saveButtonState = false;
+    quizNameController = TextEditingController();
+    quizDescriptionController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    quizNameController.dispose();
+    quizDescriptionController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +82,8 @@ class ReviewAndSave extends StatelessWidget {
               ),
               ThemeTextField(
                 fieldName: Strings.quizNamePlaceholderText,
+                controllerName: quizNameController,
+                textFieldEvent: (value) => toggleButtton(),
                 icon: Icons.code_outlined,
                 border: true,
               ),
@@ -73,6 +103,8 @@ class ReviewAndSave extends StatelessWidget {
               ),
               CustomTextFormField(
                 fieldName: Strings.quizDescriptionPlaceholderText,
+                controllerName: quizDescriptionController,
+                textFieldEvent: (value) => toggleButtton(),
                 fieldHeight: 200.0,
               ),
               const SizedBox(
@@ -80,11 +112,49 @@ class ReviewAndSave extends StatelessWidget {
               ),
               ThemeButton(
                 name: Strings.saveButtonText,
+                onPressed: saveButtonState ? saveQuiz : null,
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void saveQuiz() async {
+    List list = [];
+
+    for (var i = 0; i < ref.read(quizProvider)!.length; i++) {
+      list.add(ref.read(quizProvider)?[i]?.toMap());
+    }
+
+    Map<String, dynamic> quizData = {
+      "quizName": quizNameController.text,
+      "quizDescription": quizDescriptionController.text,
+      "banner": await ref
+          .read(quizControllerProvider.notifier)
+          .saveImageController(
+              context,
+              ref.read(quizDataProvider)["banner"] ??
+                  File("assets/images/placeholder.png")),
+      "quizData": list,
+    };
+
+    ref
+        .read(quizControllerProvider.notifier)
+        .saveQuizController(context, quizData);
+  }
+
+  void toggleButtton() {
+    if (quizNameController.text.isNotEmpty &&
+        quizDescriptionController.text.isNotEmpty) {
+      setState(() {
+        saveButtonState = true;
+      });
+    } else {
+      setState(() {
+        saveButtonState = false;
+      });
+    }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_craft/helper/colors_sys.dart';
 
 class ThemeButton extends StatelessWidget {
   const ThemeButton(
@@ -21,8 +22,18 @@ class ThemeButton extends StatelessWidget {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0))),
         minimumSize: const MaterialStatePropertyAll(Size.fromHeight(40)),
         padding: const MaterialStatePropertyAll(EdgeInsets.all(16.0)),
-        backgroundColor: MaterialStatePropertyAll<Color>(
-            buttonColor ?? Theme.of(context).primaryColor),
+        overlayColor: const MaterialStatePropertyAll<Color>(
+          Colors.blue,
+        ),
+        backgroundColor: MaterialStateProperty.resolveWith<Color>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.disabled)) {
+              return ColorSys.kgrey;
+            } else {
+              return buttonColor ?? Theme.of(context).primaryColor;
+            }
+          },
+        ),
       ),
       child: Text(
         name,
