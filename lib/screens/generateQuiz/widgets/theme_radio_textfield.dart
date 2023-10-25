@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_craft/helper/colors_sys.dart';
+import 'package:quiz_craft/screens/generateQuiz/widgets/filled_radio.dart';
 
-class ThemeTextField extends StatelessWidget {
-  const ThemeTextField({
-    super.key,
-    this.controllerName,
-    required this.fieldName,
-    this.textFieldEvent,
-    required this.icon,
-    this.fieldColor,
-    this.border = false,
-    this.isEnabled = true,
-    this.passwordField = false,
-  });
+class ThemeRadioTextField extends StatelessWidget {
+  const ThemeRadioTextField(
+      {super.key,
+      this.controllerName,
+      required this.fieldName,
+      required this.groupValue,
+      required this.optionValue,
+      this.textFieldEvent,
+      required this.radioFieldEvent,
+      required this.icon,
+      this.fieldColor,
+      this.border = false,
+      this.passwordField = false});
 
   final TextEditingController? controllerName;
   final void Function(dynamic)? textFieldEvent;
+  final void Function(String) radioFieldEvent;
   final String fieldName;
+  final String groupValue;
+  final String optionValue;
   final bool passwordField;
   final Color? fieldColor;
   final IconData icon;
   final bool? border;
-  final bool? isEnabled;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +41,16 @@ class ThemeTextField extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(
+            width: 12,
+          ),
+          FilledRadio(
+            color: Theme.of(context).primaryColor,
+            groupValue: groupValue,
+            onChanged: radioFieldEvent,
+            radius: 10,
+            value: optionValue,
+          ),
+          const SizedBox(
             width: 20,
           ),
           Expanded(
@@ -47,14 +61,10 @@ class ThemeTextField extends StatelessWidget {
               obscureText: passwordField,
               enableSuggestions: !passwordField,
               autocorrect: !passwordField,
-              enabled: isEnabled,
               decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: fieldName,
-                  icon: Icon(
-                    icon,
-                    color: ColorSys.kprimary,
-                  )),
+                border: InputBorder.none,
+                hintText: fieldName,
+              ),
             ),
           ),
         ],

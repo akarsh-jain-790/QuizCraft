@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:quiz_craft/common_widgets/theme_button.dart';
 import 'package:quiz_craft/helper/colors_sys.dart';
 import 'package:quiz_craft/helper/strings.dart';
-import 'package:quiz_craft/screens/createQuiz/create_quiz.dart';
+import 'package:quiz_craft/screens/findQuiz/find_quiz.dart';
+import 'package:quiz_craft/screens/home/home.dart';
 import 'package:quiz_craft/screens/home/widget/join_quiz_card.dart';
+import 'package:quiz_craft/screens/saveQuiz/widget/saved_quiz_card.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class SavedQuiz extends StatelessWidget {
+  final String quizURL;
+  const SavedQuiz({
+    Key? key,
+    required this.quizURL,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +28,22 @@ class Home extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SvgPicture.asset("assets/icons/logo.svg"),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 50.0),
-                    child: JoinQuizCard(),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50.0),
+                    child: SavedQuizCard(quizURL: quizURL),
                   ),
                   const SizedBox(
                     height: 20.0,
                   ),
                   ThemeButton(
-                    name: Strings.createQuizText,
+                    name: Strings.createAnotherQuizText,
                     buttonColor: ColorSys.kwhite,
                     textColor: ColorSys.kblack,
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const CreateQuiz())),
+                    onPressed: () => Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Home()),
+                      (Route<dynamic> route) => false,
+                    ),
                   ),
                 ],
               ),
