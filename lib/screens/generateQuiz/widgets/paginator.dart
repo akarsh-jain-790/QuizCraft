@@ -1,33 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pagination_flutter/pagination.dart';
+import 'package:quiz_craft/screens/generateQuiz/generate_quiz.dart';
 
-class Paginator extends StatefulWidget {
-  const Paginator({super.key});
+class Paginator extends ConsumerWidget {
+  final void Function(dynamic) paginatorEvent;
 
-  @override
-  State<Paginator> createState() => _PaginatorState();
-}
-
-class _PaginatorState extends State<Paginator> {
-  int selectedPage = 1;
-
-  setSelectedPage(int index) {
-    setState(() {
-      selectedPage = index;
-    });
-  }
+  const Paginator({super.key, required this.paginatorEvent});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Pagination(
       numOfPages: 10,
-      selectedPage: selectedPage,
+      selectedPage: ref.watch(pageCountProvider),
       pagesVisible: 3,
-      onPageChanged: (page) {
-        setState(() {
-          selectedPage = page;
-        });
-      },
+      onPageChanged: paginatorEvent,
       nextIcon: Icon(
         Icons.arrow_forward_ios,
         color: Theme.of(context).primaryColor,

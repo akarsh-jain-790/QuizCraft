@@ -6,17 +6,36 @@ import 'package:quiz_craft/common_widgets/theme_textfield.dart';
 import 'package:quiz_craft/firebase/auth/controller/auth_controller.dart';
 import 'package:quiz_craft/helper/strings.dart';
 import 'package:quiz_craft/screens/authentication/widgets/horizontal_or_line.dart';
-import 'package:quiz_craft/screens/home/home.dart';
 
-class Authentication extends ConsumerWidget {
+class Authentication extends ConsumerStatefulWidget {
   const Authentication({super.key});
 
-  void signInWithGoogle(BuildContext context, WidgetRef ref) {
-    ref.read(authControllerProvider.notifier).signInWithGoogle(context);
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _AuthenticationState();
+}
+
+class _AuthenticationState extends ConsumerState<Authentication> {
+  late TextEditingController _emailController;
+  late TextEditingController _passwordController;
+  late bool loginButtonState;
+
+  @override
+  void initState() {
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    loginButtonState = false;
+    super.initState();
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final isLoading = ref.watch(authControllerProvider);
 
     return Scaffold(
@@ -29,21 +48,27 @@ class Authentication extends ConsumerWidget {
             IconThemeData(color: Theme.of(context).colorScheme.onSurface),
       ),
       body: SafeArea(
-          child: isLoading
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Container(
+        child: isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : SingleChildScrollView(
+                child: Container(
                   padding: const EdgeInsets.all(16),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
+                      const SizedBox(
+                        height: 20.0,
+                      ),
                       SocialButton(
                         name: Strings.loginWithGoogle,
                         color: const Color.fromRGBO(255, 255, 255, 1),
                         logo: 'assets/icons/google.svg',
-                        onPressed: () => signInWithGoogle(context, ref),
+                        onPressed: () => signInWithGoogle(),
+                      ),
+                      const SizedBox(
+                        height: 20.0,
                       ),
                       SocialButton(
                         name: Strings.loginWithFacebook,
@@ -51,9 +76,15 @@ class Authentication extends ConsumerWidget {
                         logo: 'assets/icons/facebook.svg',
                         logoColor: true,
                       ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
                       HorizontalOrLine(
                         height: 0.0,
                         label: Strings.horizontalOrLineText,
+                      ),
+                      const SizedBox(
+                        height: 20.0,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,9 +102,14 @@ class Authentication extends ConsumerWidget {
                           ),
                           ThemeTextField(
                             fieldName: Strings.emailPlaceholder,
+                            controllerName: _emailController,
+                            textFieldEvent: (value) => toggleButtton(),
                             icon: Icons.mail_outline,
                           ),
                         ],
+                      ),
+                      const SizedBox(
+                        height: 20.0,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,16 +127,24 @@ class Authentication extends ConsumerWidget {
                           ),
                           ThemeTextField(
                             fieldName: Strings.passwordPlaceholder,
+                            controllerName: _passwordController,
+                            passwordField: true,
+                            textFieldEvent: (value) => toggleButtton(),
                             icon: Icons.lock_outline,
                           ),
                         ],
                       ),
+                      const SizedBox(
+                        height: 40.0,
+                      ),
                       ThemeButton(
                         name: Strings.loginText,
-                        onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Home())),
+                        onPressed: loginButtonState
+                            ? signInWithEmailAndPassword
+                            : null,
+                      ),
+                      const SizedBox(
+                        height: 20.0,
                       ),
                       Text(
                         Strings.forgotPasswordText,
@@ -109,6 +153,9 @@ class Authentication extends ConsumerWidget {
                             color: Theme.of(context).primaryColor),
                         textAlign: TextAlign.center,
                       ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
                       Text(
                         Strings.termsAndConditionText,
                         style: Theme.of(context).textTheme.bodyMedium,
@@ -116,7 +163,36 @@ class Authentication extends ConsumerWidget {
                       ),
                     ],
                   ),
-                )),
+                ),
+              ),
+      ),
     );
+  }
+
+  void signInWithGoogle() {
+    ref.read(authControllerProvider.notifier).signInWithGoogle(context);
+  }
+
+  void signInWithEmailAndPassword() {
+    Map<String, dynamic> userData = {
+      "email": _emailController.text,
+      "password": _passwordController.text
+    };
+    ref
+        .read(authControllerProvider.notifier)
+        .signInWithEmailAndPassword(context, userData);
+  }
+
+  void toggleButtton() {
+    if (_emailController.text.isNotEmpty &&
+        _passwordController.text.isNotEmpty) {
+      setState(() {
+        loginButtonState = true;
+      });
+    } else {
+      setState(() {
+        loginButtonState = false;
+      });
+    }
   }
 }

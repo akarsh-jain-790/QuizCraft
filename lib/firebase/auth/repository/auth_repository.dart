@@ -112,6 +112,31 @@ class AuthRepository {
     }
   }
 
+  FutureEither<UserModel> signInWithEmailAndPassword(
+      Map<String, dynamic> userData) async {
+    try {
+      //? Creating a new User using Email and Password.
+      UserCredential userCredential =
+          await _firebaseAuth.signInWithEmailAndPassword(
+        email: userData["email"],
+        password: userData["password"],
+      );
+
+      //? Storing the user data in firestore.
+      UserModel userModel;
+      userModel = await getUserData(userCredential.user!.uid).first;
+
+      //? In case of success we are returning the userModel to the controller.
+      return right(userModel);
+    } on FirebaseAuthException catch (e) {
+      //? Throws the error to the next catch block.
+      return left(Failure(e.message!));
+    } catch (e) {
+      //? returns the error to the controller.
+      return left(Failure("Authentication failed!"));
+    }
+  }
+
   Stream<UserModel> getUserData(String uid) {
     return _user.doc(uid).snapshots().map(
         (event) => UserModel.fromMap(event.data() as Map<String, dynamic>));

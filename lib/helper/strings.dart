@@ -16,7 +16,7 @@ class Strings {
   static String passwordPlaceholder = "Your password";
   static String forgotPasswordText = "Forgot password?";
   static String termsAndConditionText =
-      "By continuing, you agree to the Terms of Services \n & Privacy Policy.";
+      "By continuing, you agree to the \n Terms of Services \n & Privacy Policy.";
   static String horizontalOrLineText = "OR";
 
   // Home Page
@@ -55,4 +55,10 @@ class Strings {
   static String numberOfQuestionsText = "10 questions";
   static String timeText = "10 minutes";
   static String startQuizText = "Start Quiz";
+
+  //Save quiz
+  static String saveQuizText = "Congratulation Quiz Saved Successfully!";
+  static String urlText = "Here's your Quiz Code.";
+  static String copyURLText = "Copy Code";
+  static String createAnotherQuizText = "Create Another Quiz";
 }
