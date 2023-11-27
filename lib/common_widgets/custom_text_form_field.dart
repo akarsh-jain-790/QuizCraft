@@ -7,11 +7,13 @@ class CustomTextFormField extends StatelessWidget {
       this.controllerName,
       required this.fieldName,
       this.textFieldEvent,
+      this.enabled = false,
       this.fieldHeight = 250.0});
 
   final TextEditingController? controllerName;
   final void Function(dynamic)? textFieldEvent;
   final String fieldName;
+  final bool enabled;
   final double fieldHeight;
 
   @override
@@ -36,6 +38,7 @@ class CustomTextFormField extends StatelessWidget {
                 keyboardType: TextInputType.text,
                 maxLines: null,
                 expands: true,
+                enabled: enabled,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       fontSize: 20.0,
                     ),

@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_craft/common_widgets/theme_button.dart';
 import 'package:quiz_craft/helper/colors_sys.dart';
 import 'package:quiz_craft/helper/strings.dart';
-import 'package:quiz_craft/screens/findQuiz/find_quiz.dart';
 import 'package:quiz_craft/screens/home/home.dart';
-import 'package:quiz_craft/screens/home/widget/join_quiz_card.dart';
 import 'package:quiz_craft/screens/saveQuiz/widget/saved_quiz_card.dart';
 
 class SavedQuiz extends StatelessWidget {
