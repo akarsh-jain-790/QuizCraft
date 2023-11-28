@@ -61,4 +61,13 @@ class Strings {
   static String urlText = "Here's your Quiz Code.";
   static String copyURLText = "Copy Code";
   static String createAnotherQuizText = "Create Another Quiz";
+
+  // Play quiz
+  static String submitQuizText = "Submit Quiz";
+
+  // Result quiz
+  static String resultQuizText = "Quiz Result";
+  static String congratulationText = "Congratulation!";
+  static String scoreText = "Your Score!";
+  static String doneText = "Done";
 }

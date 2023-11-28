@@ -14,6 +14,7 @@ class ThemeRadioTextField extends StatelessWidget {
       required this.icon,
       this.fieldColor,
       this.border = false,
+      this.enabled = true,
       this.passwordField = false});
 
   final TextEditingController? controllerName;
@@ -26,6 +27,7 @@ class ThemeRadioTextField extends StatelessWidget {
   final Color? fieldColor;
   final IconData icon;
   final bool? border;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class ThemeRadioTextField extends StatelessWidget {
           ),
           FilledRadio(
             color: Theme.of(context).primaryColor,
-            groupValue: groupValue,
+            groupValue: enabled ? groupValue : "5",
             onChanged: radioFieldEvent,
             radius: 10,
             value: optionValue,
@@ -54,18 +56,20 @@ class ThemeRadioTextField extends StatelessWidget {
             width: 20,
           ),
           Expanded(
-            child: TextField(
-              controller: controllerName,
-              onChanged: textFieldEvent,
-              keyboardType: TextInputType.text,
-              obscureText: passwordField,
-              enableSuggestions: !passwordField,
-              autocorrect: !passwordField,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: fieldName,
-              ),
-            ),
+            child: !enabled
+                ? Text(controllerName!.text)
+                : TextField(
+                    controller: controllerName,
+                    onChanged: textFieldEvent,
+                    keyboardType: TextInputType.text,
+                    obscureText: passwordField,
+                    enableSuggestions: !passwordField,
+                    autocorrect: !passwordField,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: fieldName,
+                    ),
+                  ),
           ),
         ],
       ),

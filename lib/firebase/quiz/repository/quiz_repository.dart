@@ -66,6 +66,42 @@ class QuizRepository {
     }
   }
 
+  FutureEither<Map<String, dynamic>> findQuiz(String quizCode) async {
+    try {
+      final QuerySnapshot result = await _quizzes.get();
+      final List<DocumentSnapshot> documents = result.docs;
+      bool isExist = false;
+      late DocumentSnapshot documentSnapshot;
+
+      for (var doc in documents) {
+        if (doc.id == quizCode) {
+          isExist = true;
+          documentSnapshot = doc;
+        }
+      }
+
+      if (!isExist) {
+        throw Exception();
+      }
+
+      Map<String, dynamic> quizData = {
+        "quizName": documentSnapshot.get("quizName"),
+        "quizDescription": documentSnapshot.get("quizDescription"),
+        "banner": documentSnapshot.get("banner"),
+        "quizData": documentSnapshot.get("quizData"),
+      };
+
+      //? In case of success we are returning the quiz url to the controller.
+      return right(quizData);
+    } on FirebaseAuthException catch (e) {
+      //? Throws the error to the next catch block.
+      return left(Failure(e.message!));
+    } catch (e) {
+      //? returns the error to the controller.
+      return left(Failure("Quiz not found!"));
+    }
+  }
+
   String generateRandomString() {
     var r = Random();
     return String.fromCharCodes(

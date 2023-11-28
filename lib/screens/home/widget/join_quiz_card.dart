@@ -1,12 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_craft/common_widgets/theme_button.dart';
 import 'package:quiz_craft/common_widgets/theme_textfield.dart';
+import 'package:quiz_craft/firebase/quiz/controller/quiz_controller.dart';
 import 'package:quiz_craft/helper/colors_sys.dart';
 import 'package:quiz_craft/helper/strings.dart';
-import 'package:quiz_craft/screens/findQuiz/find_quiz.dart';
 
-class JoinQuizCard extends StatelessWidget {
+class JoinQuizCard extends StatefulWidget {
   const JoinQuizCard({super.key});
+
+  @override
+  State<JoinQuizCard> createState() => _JoinQuizCardState();
+}
+
+class _JoinQuizCardState extends State<JoinQuizCard> {
+  late TextEditingController _quizCodeController;
+
+  @override
+  void initState() {
+    _quizCodeController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _quizCodeController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +58,21 @@ class JoinQuizCard extends StatelessWidget {
               ThemeTextField(
                 fieldName: Strings.quizCodeText,
                 fieldColor: ColorSys.ksecondary,
+                controllerName: _quizCodeController,
                 icon: Icons.code,
               ),
-              ThemeButton(
-                name: Strings.findQuizButtonText,
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const FindQuiz())),
+              Consumer(
+                builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                  return ThemeButton(
+                    name: Strings.findQuizButtonText,
+                    onPressed: () {
+                      ref
+                          .read(quizControllerProvider.notifier)
+                          .findQuizController(
+                              context, _quizCodeController.text);
+                    },
+                  );
+                },
               ),
             ],
           ),

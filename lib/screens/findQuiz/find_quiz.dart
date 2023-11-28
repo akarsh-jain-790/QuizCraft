@@ -3,9 +3,18 @@ import 'package:flutter_svg/svg.dart';
 import 'package:quiz_craft/common_widgets/theme_button.dart';
 import 'package:quiz_craft/helper/colors_sys.dart';
 import 'package:quiz_craft/helper/strings.dart';
+import 'package:quiz_craft/screens/playQuiz/play_quiz.dart.dart';
 
 class FindQuiz extends StatelessWidget {
-  const FindQuiz({super.key});
+  final String quizName;
+  final String quizDescription;
+  final String banner;
+
+  const FindQuiz(
+      {super.key,
+      required this.quizName,
+      required this.quizDescription,
+      required this.banner});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +52,7 @@ class FindQuiz extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                Strings.quizNameText,
+                quizName,
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium
@@ -116,7 +125,7 @@ class FindQuiz extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, eligendi corrupti, iste dolore ipsa officia eaque cupiditate deserunt et distinctio similique fugit! Commodi ad cupiditate eligendi deleniti amet vero inventore.",
+                quizDescription,
                 style: Theme.of(context).textTheme.bodyMedium,
                 textAlign: TextAlign.left,
               ),
@@ -124,6 +133,8 @@ class FindQuiz extends StatelessWidget {
                 height: 40,
               ),
               ThemeButton(
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const PlayQuiz())),
                 name: Strings.startQuizText,
               ),
             ],

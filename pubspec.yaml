@@ -49,6 +49,7 @@ dependencies:
   fpdart: ^1.1.0
   http: ^1.1.0
   image_picker: ^1.0.4
+  lottie: ^2.6.0
 
 dev_dependencies:
   flutter_test:
@@ -83,7 +84,7 @@ flutter:
     - assets/icons/find_quiz.svg
     - assets/icons/question_mark.svg
     - assets/icons/timer.svg
-  #   - images/a_dot_ham.jpeg
+    - assets/icons/trophy.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
