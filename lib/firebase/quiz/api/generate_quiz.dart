@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:http/http.dart' as http;
@@ -12,10 +13,12 @@ final generateQuizProvider = Provider(
   (ref) => GenerateQuiz(),
 );
 
+String API_KEY = dotenv.env['API_KEY']!;
+
 class GenerateQuiz {
   FutureEither<String> validatePrompt(Map<String, dynamic> quizData) async {
-    const String apiUrl =
-        'https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key=AIzaSyDSAfh6Wihy4EsD3G-B72W6hPecubAOq5s';
+    String apiUrl =
+        'https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key=$API_KEY';
 
     final Map<String, String> headers = {
       'Content-Type': 'application/json',
@@ -51,8 +54,8 @@ class GenerateQuiz {
 
   FutureEither<List<QuizModel?>> palmGenerateQuiz(
       Map<String, dynamic> quizData) async {
-    const String apiUrl =
-        'https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key=AIzaSyDSAfh6Wihy4EsD3G-B72W6hPecubAOq5s';
+    String apiUrl =
+        'https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key=$API_KEY';
 
     final Map<String, String> headers = {
       'Content-Type': 'application/json',
@@ -104,8 +107,8 @@ class GenerateQuiz {
 
   FutureEither<QuizModel?> generateSingleQuestion(
       Map<String, dynamic> quizData) async {
-    const String apiUrl =
-        'https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key=AIzaSyDSAfh6Wihy4EsD3G-B72W6hPecubAOq5s';
+    String apiUrl =
+        'https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key=$API_KEY';
 
     final Map<String, String> headers = {
       'Content-Type': 'application/json',
