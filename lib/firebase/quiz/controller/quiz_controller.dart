@@ -6,7 +6,7 @@ import 'package:quiz_craft/firebase/quiz/api/generate_quiz.dart';
 import 'package:quiz_craft/common_widgets/toast.dart';
 import 'package:quiz_craft/firebase/quiz/repository/quiz_repository.dart';
 import 'package:quiz_craft/models/quiz_model.dart';
-import 'package:quiz_craft/quizResult/quizResult.dart';
+import 'package:quiz_craft/screens/quizResult/quizResult.dart';
 import 'package:quiz_craft/screens/findQuiz/find_quiz.dart';
 import 'package:quiz_craft/screens/generateQuiz/generate_quiz.dart';
 import 'package:quiz_craft/screens/saveQuiz/saved_quiz.dart';

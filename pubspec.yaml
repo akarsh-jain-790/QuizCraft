@@ -50,6 +50,7 @@ dependencies:
   http: ^1.1.0
   image_picker: ^1.0.4
   lottie: ^2.6.0
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -85,6 +86,7 @@ flutter:
     - assets/icons/question_mark.svg
     - assets/icons/timer.svg
     - assets/icons/trophy.json
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
